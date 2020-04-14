@@ -42,21 +42,20 @@ public class ToDoList extends AppCompatActivity {
                 LayoutInflater li = LayoutInflater.from(context);
                 View promptsView = li.inflate(R.layout.prompts, null);
                 AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                // set prompts.xml to alertdialog builder
+
                 alertDialogBuilder.setView(promptsView);
+
                 EditText userInput = (EditText) promptsView
                         .findViewById(R.id.edtText);
                 String getInput = userInput.getText().toString();
                     addArray.add(getInput);
-                    // set dialog message
+
                     alertDialogBuilder
                             .setCancelable(false)
                             .setPositiveButton("Add",
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
-                                            // get user input
                                             listView.setAdapter(arrayAdapter);
-
                                         }
                                     })
                             .setNegativeButton("Cancel",
@@ -66,10 +65,8 @@ public class ToDoList extends AppCompatActivity {
                                         }
                                     });
 
-                    // create alert dialog
                     AlertDialog alertDialog = alertDialogBuilder.create();
 
-                    // show it
                     alertDialog.show();
 
                 }
