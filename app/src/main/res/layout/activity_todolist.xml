@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ToDoList">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="NOTES ARE DISPLAYED HERE :"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:id="@+id/txtView"
+            />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lstView"
+            />
+    </LinearLayout>
+
+    <com.jediburrell.customfab.FloatingActionButton
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="24dp"
+        android:backgroundTint="#E44242"
+        app:fabIcon="@drawable/ic_add_black_24dp"
+        app:fabType="custom"
+        app:fabShape="@drawable/teardrop"
+        android:id="@+id/fabBtn"
+        />
+</RelativeLayout>
