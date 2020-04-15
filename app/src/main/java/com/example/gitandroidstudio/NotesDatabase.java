@@ -33,10 +33,6 @@ public abstract class NotesDatabase extends RoomDatabase {
                 note.setNotes(noteString);
                 NotesDatabase.getNotesDatabase(context).notesDao().add(note);
                 List<Notes> notes = NotesDatabase.getNotesDatabase(context).notesDao().getAll();
-                Log.v("NotesDB", "Notes count is " + notes.size());
-                for (int i = 0; i < notes.size(); i++) {
-                    Log.v("NotesDB", "Note at "+ i + " is : " + notes.get(i).getNotes());
-                }
 
             }
         });
