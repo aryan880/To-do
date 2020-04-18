@@ -22,15 +22,15 @@ import android.widget.Toast;
 import com.jediburrell.customfab.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 
 public class ToDoList extends AppCompatActivity {
-    private ArrayList<String> addArray;
+    private ArrayList<Notes> addArray;
     private FloatingActionButton fab;
     private ListView listView;
     final Context context = this;
-    NotesAdapter arrayAdapter ;
-    private NotesDatabase notesDatabase;
-
+    CustomAdapter arrayAdapter ;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,8 +38,8 @@ public class ToDoList extends AppCompatActivity {
         setContentView(R.layout.activity_todolist);
         fab = (FloatingActionButton) findViewById(R.id.fabBtn);
         listView = (ListView) findViewById(R.id.lstView);
-        addArray = new ArrayList<String>();
-        arrayAdapter = new NotesAdapter();
+        addArray = new ArrayList<Notes>();
+        arrayAdapter = new CustomAdapter(this, addArray);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,8 +57,9 @@ public class ToDoList extends AppCompatActivity {
                                     new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             String getInput = userInput.getText().toString();
-                                            addArray.add(getInput);
-
+                                            Notes noteList = new Notes();
+                                            noteList.setNotes(getInput);
+                                            addArray.addAll(getInput);
 
                                         }
                                     })
@@ -75,22 +76,6 @@ public class ToDoList extends AppCompatActivity {
                 }
 
         });
-
-    }
-    class NotesAdapter extends ArrayAdapter<String> {
-        NotesAdapter(){
-            super(ToDoList.this,android.R.layout.simple_list_item_1,addArray);
-        }
-        public View getView(int position, View convertView,
-                            ViewGroup parent){
-            View row = convertView;
-            if(row==null){
-                LayoutInflater inflater=getLayoutInflater();
-                row = inflater.inflate(R.layout.adaptercustom,null);
-            }
-            ((TextView)row.findViewById(R.id.txtViewCa)).setText(addArray.get(position));
-            return (row);
-        }
 
     }
 
