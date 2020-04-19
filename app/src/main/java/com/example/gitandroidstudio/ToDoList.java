@@ -59,8 +59,7 @@ public class ToDoList extends AppCompatActivity {
                                             String getInput = userInput.getText().toString();
                                             Notes noteList = new Notes();
                                             noteList.setNotes(getInput);
-                                            addArray.addAll(getInput);
-
+                                            addArray.add();
                                         }
                                     })
                             .setNegativeButton("Cancel",

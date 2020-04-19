@@ -16,26 +16,35 @@ public abstract class NotesDatabase extends RoomDatabase {
 
     public abstract NotesDao notesDao();
 
-    public static NotesDatabase getNotesDatabase(Context context) {
+    public static synchronized NotesDatabase getDb(Context context){
         if (db == null) {
             db = Room.databaseBuilder(context.getApplicationContext(), NotesDatabase.class, "notes-db")
+                    .fallbackToDestructiveMigration()
                     .build();
         }
         return db;
-    }
 
-    public static void addNote(final Context context, final String noteString) {
-        AsyncTask.execute(new Runnable() {
-            @Override
-            public void run() {
-                // Insert Data
-                Notes note = new Notes();
-                note.setNotes(noteString);
-                NotesDatabase.getNotesDatabase(context).notesDao().add(note);
-                List<Notes> notes = NotesDatabase.getNotesDatabase(context).notesDao().getAll();
-
-            }
-        });
     }
+//    public static NotesDatabase getNotesDatabase(Context context) {
+//        if (db == null) {
+//            db = Room.databaseBuilder(context.getApplicationContext(), NotesDatabase.class, "notes-db")
+//                    .build();
+//        }
+//        return db;
+//    }
+
+//    public static void addNote(final Context context, final String noteString) {
+//        AsyncTask.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//                // Insert Data
+//                Notes note = new Notes();
+//                note.setNotes(noteString);
+//                NotesDatabase.getNotesDatabase(context).notesDao().add(note);
+//                List<Notes> notes = NotesDatabase.getNotesDatabase(context).notesDao().getAll();
+//
+//            }
+//        });
+//    }
 
 }

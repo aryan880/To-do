@@ -1,6 +1,7 @@
 package com.example.gitandroidstudio;
 
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -11,11 +12,14 @@ import java.util.List;
 
 @Dao
 public interface NotesDao {
-    @Query("SELECT * FROM notes")
-    List<Notes> getAll();
+    @Query("SELECT * FROM note_table ORDER BY priority DESC")
+    LiveData<List<Notes>> getAllNotes();
+
+    @Query("DELETE FROM note_table")
+    void deleteAllNotes();
 
     @Insert
-    void add(Notes notes);
+    void insert(Notes notes);
 
     @Update
     void update(Notes notes);

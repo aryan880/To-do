@@ -6,35 +6,53 @@ import androidx.room.PrimaryKey;
 
 import java.util.Arrays;
 
-@Entity
+@Entity(tableName = "note_table")
 public class Notes {
     @PrimaryKey(autoGenerate = true)
-    private int uid;
+    private int id;
     @ColumnInfo
-    private String notes;
+    private String title;
+    @ColumnInfo
+    private String description;
+    @ColumnInfo
+    private int priority;
 
-    public Notes(int uid, String notes) {
-        this.uid = uid;
-        this.notes = notes;
+    public Notes(String title, String description, int priority) {
+        this.title = title;
+        this.description = description;
+        this.priority = priority;
     }
 
-    public Notes() {
 
+    public int getId() {
+        return id;
     }
 
-    public int getUid() {
-        return uid;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public String getTitle() {
+        return title;
     }
 
-    public String getNotes() {
-        return notes;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 }

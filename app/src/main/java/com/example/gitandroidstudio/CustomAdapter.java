@@ -16,18 +16,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Notes> addArray = new ArrayList<>();
+    Notes currentNote = new Notes();
 
     public CustomAdapter(Context mContext, ArrayList<Notes> addArray) {
         this.mContext = mContext;
         this.addArray = addArray;
-    }
-
-    public CustomAdapter() {
-
     }
 
     @Override
@@ -41,7 +39,7 @@ public class CustomAdapter extends BaseAdapter {
     }
 
     @Override
-    public long getItemId(int position) {
+    public long getItemId(int position)  {
         return 0;
     }
 
